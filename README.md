@@ -84,6 +84,23 @@ delete(note_id)
         {
            throw new Error('error');
         } 
-  }   
+  }
+  
+/**
+ * replaces the content in the note at note_id with new_content.
+ * @param {number} note_id index of the note 
+ * @param {string} new_content replacement note
+ */
+edit(note_id, new_content)
+ {
+    if (typeof  note_id === 'number' && typeof new_content === 'string') 
+        {
+           this.notes[note_id] = new_content;
+        }
+    else
+        {
+           throw new Error('error');
+        } 
+ }
 }
 ```
