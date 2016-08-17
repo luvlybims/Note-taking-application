@@ -1,15 +1,25 @@
 ```javascript
+/** 
+ * Class to implement a note taking application
+ * @constructor {string} author note author
+ * @constructor {Array.<string>} notes list of notes to be processed
+ */
 class NotesApplication
 { 
-    constructor(author) /**Takes in parameter author as the author of the note*/
-
+    constructor(author) 
     {
-        this.author = author; /**saves in an instance variable*/
-        this.notes = []; /**saves in an instance property*/
+        this.author = author; 
+        this.notes = []; 
     }
-    create(note_content) /**takes the note content as the parameter and adds  it to the notes array*/
+
+/**
+ * Takes the note content as parameter and returns an array including the
+ * note content
+ * @param {string} adds note content to notes array
+ * @return {Array.<string>} returns notes array including note content
+create(note_content) 
     {
-        this.notes.push(note_content); /**adds the note content to the notes array*/
+        this.notes.push(note_content); 
     }
     listNotes(); /**lists out each of the notes*/
     get(note_id); /**takes a note_id which refers to the index of the note in the notes list and returns the content of that note as a string*/
