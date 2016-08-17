@@ -1,8 +1,8 @@
 ```javascript
 class NotesApplication
 { 
-    constructor(author, notes[]){
-        
+    constructor(author){
+        this.author = author
     }
     
 }
