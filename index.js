@@ -8,15 +8,15 @@ class NotesApplication
 { 
     constructor(author) 
     {
-    	if(typeof author === 'string')
-    	{
+        if(typeof author === 'string')
+        {
             this.author = author; 
             this.notes = []; 
-    	}
-    	else
-    	{
-    	    throw new Error('error');	
-    	}
+        }
+        else
+        {
+            console.log('Author must be a string'); 
+        }
   }
 
 /**
@@ -26,20 +26,20 @@ class NotesApplication
  */
 create(note_content) 
  {
-    	if (typeof  note_content === 'string')
-    	{
+        if (typeof  note_content === 'string')
+        {
         this.notes.push(note_content);
            
-    	}
-    	else
-    	{
-    	   throw new Error('error');
+        }
+        else
+        {
+           console.log('Note content must be a string');    
         }
  }
 
 /**
  * lists out each of the notes in the notes list in the specified format. 
- * @return {string} returns the respective index of each of the item in the *array, the note content and the author 
+ * @return {string} returns the respective index of each of the item in the array, the note content and the author 
  */
 listNotes()
  {
@@ -56,16 +56,15 @@ listNotes()
  */ 
 get(note_id)
  {   
-    if (typeof  note_id === 'number')
-    	{
-            for (let note_id = 0; note_id <= this.notes.length - 1; note_id++)
+    if (typeof  note_id === 'number' && note_id <= this.notes.length)
+        {
               {
-                 return this.notes[note_id];
+                 console.log(this.notes[note_id]);
               }
-    	}
+        }
     else
-    	{
-    	   throw new Error('error');
+        {
+           console.log('Note index must be a string');  
         }
  }
  
@@ -77,25 +76,22 @@ get(note_id)
  */ 
 search(search_text)
  {
- 	if (typeof  search_text === 'string') 
+    if (typeof  search_text === 'string') 
         {
-           let filtered_results = [];
-           
-           for (let note_id = 0; note_id < this.notes.length; note_id++ )//looping through list
+           console.log(`Showing results for search '${search_text}'`);
+           for (let note_id = 0; note_id < this.notes.length; note_id++ )
             {
-            	if (this.notes[note_id].indexOf(search_text) >= 0) 
-                {
-                	filtered_results.push(`Note ID: [${this.notes[note_id]}]\n${this.notes[note_id]}\n\nBy Author [${this.author}]`)
-               
-            	}
-            	
+                if (this.notes[note_id].indexOf(search_text) >= 0) 
+                  {
+                    var result = (`Note ID: [${note_id}]\n${this.notes[note_id]}\n\nBy Author [${this.author}]`)
+                    console.log(result);
+                }
+                
             }
-            console.log(`Showing results for search '${search_text}'`);
-            
         }
     else
         {
-    	   throw new Error('error');
+           console.log('Search text must be a string');
         } 
  }
 
@@ -111,7 +107,7 @@ delete(note_id)
         }
     else
         {
-    	   throw new Error('error');
+           console.log('Note index must be a number');  
         } 
   }
   
@@ -122,14 +118,29 @@ delete(note_id)
  */
 edit(note_id, new_content)
  {
- 	if (typeof  note_id === 'number' && typeof new_content === 'string') 
+    if (typeof  note_id === 'number' && typeof new_content === 'string') 
         {
            this.notes[note_id] = new_content;
+           console.log(this.notes);
         }
     else
         {
-    	   throw new Error('error');
+           console.log('Wrong type of input entered');
         } 
  }
 }
+
+
+//Test cases
+var myNote = new NotesApplication('bimbo')
+myNote.create ('bargain')
+myNote.create ('wield')
+myNote.create ('field')
+myNote.listNotes()
+myNote.get(2)
+myNote.search('eld')
+myNote.delete(1)
+myNote.edit(1,'pain')
+
+
 
